@@ -25,6 +25,6 @@ jobs:
             files: filtered_adlist.txt
             tag_name: latest
             name: "Adlist Adjuster Release ${{ github.run_number }}"
-            body: "Automated release of filtered_adlist.txt"
+            body: "Automated release of filtered_adlist.txt file"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
