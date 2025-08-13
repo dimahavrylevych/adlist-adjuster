@@ -5,7 +5,8 @@ OUTPUT="filtered_adlist.txt"
 TMPFILE=$(mktemp)
 
 # Array of words to filter out
-FILTER_WORDS=("googleadservices" "tracker")
+#FILTER_WORDS=("googleadservices" "tracker")
+FILTER_WORDS=("googleadservices")
 
 echo "Starting adlist adjustment script..."
 echo "Downloading file from: $URL"
