@@ -1,0 +1,30 @@
+name: Adjuster Release
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build-and-release:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+
+        - name: Make adjuster.sh executable
+          run: chmod +x adjuster.sh
+
+        - name: Run adjuster.sh
+          run: ./adjuster.sh
+
+        - name: Create Release
+          id: create_release
+          uses: softprops/action-gh-release@v1
+          with:
+            files: filtered_adlist.txt
+            tag_name: adlist-adjuster-${{ github.run_number }}
+            name: "Adlist Adjuster Release ${{ github.run_number }}"
+            body: "Automated release of filtered_adlist.txt"
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
